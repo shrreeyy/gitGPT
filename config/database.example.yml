@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: username # edit me
+  password: password # edit me
+  timeout: 5000
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: gitgpt_development
+
+test:
+  <<: *default
+  database: gitgpt_test
+
+production:
+  <<: *default
+  database: gitgpt_production
