@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   scope :git do
     get '/repositories', to: 'git/repositories#index', as: 'repositories'
+    get '/pull-requests', to: 'git/pull_requests#index', as: 'pull_requests'
   end
 end

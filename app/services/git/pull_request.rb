@@ -1,14 +1,16 @@
-require "uri"
-require "net/http"
+require 'uri'
+require 'net/http'
 
 module Git
-  class Repository
-    def initialize(token)
+  class PullRequest
+    def initialize(token, username, repo_name)
       @token = token
+      @owner = username
+      @repo = repo_name
     end
 
     def run
-      url = URI("https://api.github.com/user/repos")
+      url = URI("https://api.github.com/repos/#{@owner}/#{@repo}/pulls")
 
       https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true

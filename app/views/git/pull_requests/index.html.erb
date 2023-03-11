@@ -1,0 +1,18 @@
+<% if @responses.any? %>
+<div class="container">
+  <table class="table table-striped">
+    <tr>
+      <th>Pull Request Name</th>
+      <th>Actions</th>
+    </tr>
+    <% @responses.each do |response|%>
+    <tr>
+      <td><%= response['title'] %></td>
+      <td>Button to link to view Files for this Pull Request</td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<% else %>
+  <p> No Pull requests found for this Repository</p>
+<% end %>
