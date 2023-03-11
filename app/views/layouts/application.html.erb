@@ -12,6 +12,12 @@
 
   <body>
     <%= render partial: 'layouts/header' %>
+    <% if flash.any? %>
+      <div class="alert alert-<%= flash.keys.first %>">
+        <%= flash[flash.keys.first] %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

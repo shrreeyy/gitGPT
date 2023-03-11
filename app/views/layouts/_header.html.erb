@@ -8,6 +8,12 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
           <li class="nav-item">
+            <%= link_to 'Repositories', repositories_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Edit User', edit_user_registration_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
             <%= link_to 'LogOut', destroy_user_session_path, class: 'nav-link', data: { "turbo-method": :delete } %>
           </li>
         <% else %>
