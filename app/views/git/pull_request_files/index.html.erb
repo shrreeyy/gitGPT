@@ -1,0 +1,18 @@
+<% if @responses.present? %>
+<div class="container">
+  <table class="table table-striped">
+    <tr>
+      <th>File Name</th>
+      <th>Actions</th>
+    </tr>
+    <% @responses.each do |response|%>
+    <tr>
+      <td><%= response['filename'] %></td>
+      <td>Button to Hit OpenAI api to add review</td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<% else %>
+  <p> No Files found for this Pull Request</p>
+<% end %>
