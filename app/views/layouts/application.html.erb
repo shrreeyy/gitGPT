@@ -2,22 +2,59 @@
 <html>
   <head>
     <title>Gitgpt</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style>
+      .parallax {
+        background-image: url(<%= asset_path 'code_bg.jpg' %>);
+        height: 600px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+        opacity: 5px;
+      }
+
+      .heading {
+        padding-top: 240px;
+        font-size: 35px;
+        font-weight: 900;
+        font-family: 'Josefin Sans';
+      }
+
+      .blog-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 2.5rem 0;
+        color: #727272;
+        text-align: center;
+        background-color: #f9f9f9;
+        border-top: .05rem solid #e5e5e5;
+      }
+    </style>
   </head>
 
-  <body>
+  <body style="font-family: 'Lato', sans-serif;">
     <%= render partial: 'layouts/header' %>
-    <% if flash.any? %>
-      <div class="alert alert-<%= flash.keys.first %>">
-        <%= flash[flash.keys.first] %>
+
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
+        <%= value %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <% end %>
 
     <%= yield %>
+
+    <%= render partial: 'layouts/footer' %>
   </body>
 </html>

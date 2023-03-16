@@ -1,5 +1,5 @@
 <% if @responses.present? %>
-<div class="container">
+<div class="container my-5">
   <table class="table table-striped">
     <tr>
       <th>File Name</th>
@@ -8,7 +8,15 @@
     <% @responses.each do |response|%>
     <tr>
       <td><%= response['filename'] %></td>
-      <td>Button to Hit OpenAI api to add review</td>
+      <td>
+        <%= form_tag audit_code_path, method: :post, 'data-turbo': false do %>
+          <%= hidden_field_tag :git_username, @git_username %>
+          <%= hidden_field_tag :repo_name, @repo_name %>
+          <%= hidden_field_tag :number, response['number'] %>
+          <%= hidden_field_tag :content, response['patch'] %>
+          <%= submit_tag "View Refactoring Suggestion", class: 'btn btn-primary' %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </table>
