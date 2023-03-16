@@ -1,0 +1,26 @@
+<% if @responses.present? %>
+<div class="container my-5">
+  <table class="table table-striped">
+    <tr>
+      <th>File Name</th>
+      <th>Actions</th>
+    </tr>
+    <% @responses.each do |response|%>
+    <tr>
+      <td><%= response['filename'] %></td>
+      <td>
+        <%= form_tag audit_code_path, method: :post, 'data-turbo': false do %>
+          <%= hidden_field_tag :git_username, @git_username %>
+          <%= hidden_field_tag :repo_name, @repo_name %>
+          <%= hidden_field_tag :number, response['number'] %>
+          <%= hidden_field_tag :content, response['patch'] %>
+          <%= submit_tag "View Refactoring Suggestion", class: 'btn btn-primary' %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<% else %>
+  <p> No Files found for this Pull Request</p>
+<% end %>

@@ -1,3 +1,10 @@
-<h1>
-  Welcome to GitGPT
-</h1>
+<% if user_signed_in? %>
+  <div class="parallax mb-2 mw-100">
+    <h6 class="text-white d-flex justify-content-center text-wrap heading ">Simplify GitHub PR reviews and issue management with Git<span class="text-primary">GPT</span>
+    </h6>
+  </div>
+<%else%>
+  <div class="parallax mb-2 mw-100">
+    <h class="text-white d-flex justify-content-center text-wrap heading">Sign up for Git<span class="text-primary">GPT</span> and never miss a beat - stay on top of PRs and issues with ease.</h6>
+  </div>
+<%end%>

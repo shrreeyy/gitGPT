@@ -1,0 +1,25 @@
+<% if @responses.present? %>
+<div class="container">
+  <table class="table table-striped">
+    <tr>
+      <th>Pull Request Name</th>
+      <th>Actions</th>
+    </tr>
+    <% @responses.each do |response|%>
+    <tr>
+      <td><%= response['title'] %></td>
+      <td>
+        <%= form_tag pull_request_files_path, method: :get do %>
+          <%= hidden_field_tag :git_username, @git_username %>
+          <%= hidden_field_tag :repo_name, @repo_name %>
+          <%= hidden_field_tag :number, response['number'] %>
+          <%= submit_tag "View Files", class: 'btn btn-primary' %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<% else %>
+  <p> No Pull requests found for this Repository</p>
+<% end %>

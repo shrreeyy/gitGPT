@@ -1,0 +1,24 @@
+<% if @responses.present? %>
+<div class="container">
+  <table class="table table-striped">
+    <tr>
+      <th>Name of Repository</th>
+      <th>Actions</th>
+    </tr>
+    <% @responses.each do |response|%>
+    <tr>
+      <td><%= response['name'] %></td>
+      <td>
+        <%= form_tag pull_requests_path, method: :get do %>
+          <%= hidden_field_tag :git_username, response['owner']['login'] %>
+          <%= hidden_field_tag :repo_name, response['name'] %>
+          <%= submit_tag "View PR's", class: 'btn btn-primary' %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<% else %>
+  <p> No repositories found for this Github Account</p>
+<% end %>
