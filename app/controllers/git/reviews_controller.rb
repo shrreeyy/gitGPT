@@ -1,13 +1,20 @@
 # frozen_string_literal: true
 
 module Git
-  class PullRequestFilesController < ApplicationController
+  class ReviewsController < ApplicationController
     before_action :authenticate_user!
     before_action :check_git_token
     before_action :set_params
 
-    def index
-      @responses = ::Git::PullRequestFiles.new(current_user.git_token, @git_username, @repo_name, @number).run
+    def create
+      @response = ::Git::Review.new(current_user.git_token, @git_username, @repo_name, @number).run(@content, @commit_id, @path)
+      if @response['message'].present?
+        flash[:danger] = @response['message']
+        redirect_back(fallback_location: root_path)
+      else
+        flash[:success] = 'Review Added successfully'
+        redirect_to repositories_path
+      end
     rescue StandardError => e
       flash[:danger] = "Git API Error: #{e.message}"
     end
@@ -26,6 +33,9 @@ module Git
       @git_username = permitted_params[:git_username]
       @repo_name = permitted_params[:repo_name]
       @number = permitted_params[:number]
+      @content = permitted_params[:content]
+      @commit_id = permitted_params[:commit_id]
+      @path = permitted_params[:path]
     end
   end
 end

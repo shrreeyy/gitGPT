@@ -4,13 +4,13 @@ require 'net/http'
 
 module Openai
   class AiCodeAudit
-    def initialize(token, code)
+    def initialize(token, content)
       @token = token
-      @code = code
+      @content = content
     end
 
     def run
-      url = URI("https://api.openai.com/v1/completions")
+      url = URI("https://api.openai.com/v1/chat/completions")
 
       https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true
@@ -19,11 +19,14 @@ module Openai
       request["Authorization"] = "Bearer #{@token}"
       request["Content-Type"] = "application/json"
       request.body = JSON.dump({
-                        "model": "code-davinci-002",
-                        "prompt": "#{@code}",
-                        "max_tokens": 64,
-                        "temperature": 0.5
-                      })
+        "model": "gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "user",
+            "content": "#{@content}"
+          }
+        ]
+      })
 
       response = https.request(request)
       JSON.parse(response.body)

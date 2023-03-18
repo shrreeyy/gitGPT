@@ -1,0 +1,23 @@
+<% if @suggested_content.present? %>
+  <div class="container">
+    <h1 class="py-4">Suggested changes for this pull request file</h1>
+    <div class="d-flex py-2">
+      <div class="col-6">
+        <p><b>Suggested changes:</b> <%= @suggested_content %></p>
+        <button class="btn btn-primary" onclick="location.reload()">Generate New Suggestion</button>
+      </div>
+      <div class="col-6 text-center my-auto">
+        <p>If you are satisfied with suggestion you can add review for this file: </p>
+        <%= form_tag reviews_path, method: :post, 'data-turbo': false, class: "d-inline-flex" do %>
+          <%= hidden_field_tag :git_username, @git_username %>
+          <%= hidden_field_tag :repo_name, @repo_name %>
+          <%= hidden_field_tag :number, @pr_number %>
+          <%= hidden_field_tag :content, @suggested_content %>
+          <%= hidden_field_tag :commit_id, @commit_id %>
+          <%= hidden_field_tag :path, @filename %>
+          <%= submit_tag "Add Review", class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
-<div class="container header-margin">
+<div class="container">
   <table class="flatTable mt-150 my-100">
     <tr class="titleTr">
       <td class="titleTd">PULL REQUESTS</td>
@@ -17,7 +17,7 @@
           <td><%= response['created_at'].to_date %></td>
           <td><%= response['updated_at'].to_date %></td>
           <td>
-            <%= form_tag pull_request_files_path, method: :get do %>
+            <%= form_tag pull_request_files_path, method: :get, 'data-turbo': false do %>
               <%= hidden_field_tag :git_username, @git_username %>
               <%= hidden_field_tag :repo_name, @repo_name %>
               <%= hidden_field_tag :number, response['number'] %>

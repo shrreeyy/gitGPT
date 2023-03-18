@@ -1,4 +1,4 @@
-<div class="container header-margin">
+<div class="container">
   <table class="flatTable mt-150 my-100">
     <tr class="titleTr">
       <td class="titleTd">FILE CHANGES</td>
@@ -15,11 +15,13 @@
           <td><%= response['filename'] %></td>
           <td><%= response['changes'] %></td>
           <td>
-            <%= form_tag audit_code_path, method: :post, 'data-turbo': false do %>
+            <%= form_tag new_audit_code_path, method: :get, 'data-turbo': false do %>
               <%= hidden_field_tag :git_username, @git_username %>
               <%= hidden_field_tag :repo_name, @repo_name %>
-              <%= hidden_field_tag :number, response['number'] %>
+              <%= hidden_field_tag :number, @number %>
+              <%= hidden_field_tag :commit_id, response['contents_url'].split('ref=')[1] %>
               <%= hidden_field_tag :content, response['patch'] %>
+              <%= hidden_field_tag :filename, response['filename'] %>
               <%= submit_tag "View Suggestion", class: 'btn btn-primary' %>
             <% end %>
           </td>
