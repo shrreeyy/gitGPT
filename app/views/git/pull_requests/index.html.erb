@@ -1,25 +1,36 @@
-<% if @responses.present? %>
-<div class="container">
-  <table class="table table-striped">
-    <tr>
-      <th>Pull Request Name</th>
-      <th>Actions</th>
+<div class="container header-margin">
+  <table class="flatTable mt-150 my-100">
+    <tr class="titleTr">
+      <td class="titleTd">PULL REQUESTS</td>
+      <td colspan="4"></td>
     </tr>
-    <% @responses.each do |response|%>
-    <tr>
-      <td><%= response['title'] %></td>
-      <td>
-        <%= form_tag pull_request_files_path, method: :get do %>
-          <%= hidden_field_tag :git_username, @git_username %>
-          <%= hidden_field_tag :repo_name, @repo_name %>
-          <%= hidden_field_tag :number, response['number'] %>
-          <%= submit_tag "View Files", class: 'btn btn-primary' %>
-        <% end %>
-      </td>
+    <tr class="headingTr">
+      <td>PULL REQUEST NAME</td>
+      <td>CREATED DATE</td>
+      <td>LAST UPDATED DATE</td>
+      <td>ACTIONS</td>
     </tr>
+    <% if @responses.present? %>
+      <% @responses.each do |response|%>
+        <tr>
+          <td><%= response['title'] %></td>
+          <td><%= response['created_at'].to_date %></td>
+          <td><%= response['updated_at'].to_date %></td>
+          <td>
+            <%= form_tag pull_request_files_path, method: :get do %>
+              <%= hidden_field_tag :git_username, @git_username %>
+              <%= hidden_field_tag :repo_name, @repo_name %>
+              <%= hidden_field_tag :number, response['number'] %>
+              <%= submit_tag "View Files", class: 'btn btn-primary' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td>No Pull requests found for this Repository</td>
+        <td colspan="4"></td>
+      </tr>
     <% end %>
   </table>
 </div>
-<% else %>
-  <p> No Pull requests found for this Repository</p>
-<% end %>

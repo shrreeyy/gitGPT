@@ -1,67 +1,80 @@
-<div class="container my-5">
-  <div class="card mx-auto" style="width: 18rem;">
-    <div class="card-header">
-    <h4>Edit <%= resource_name.to_s.humanize %></h4>
-    </div>
-    <div class="card-body">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container mt-150">
+  <section id="formHolder">
+    <div class="row">
+      <div class="col-sm-6 brand">
+        <a href="#" class="logo">MR <span>.</span></a>
 
-        <div class="field mb-3">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control" %>
+        <div class="heading">
+           <h2>GitGPT</h2>
+           <p>Your Right Choice</p>
         </div>
 
-        <div class="field mb-3">
-          <%= f.label :git_token %><br />
-          <%= f.text_field :git_token %>
+        <div class="success-msg">
+           <p>Great! You are one of our members now</p>
+           <a href="#" class="profile">Your Profile</a>
         </div>
+      </div>
 
-        <div class="field mb-3">
-          <%= f.label :open_ai_key %><br />
-          <%= f.text_field :open_ai_key %>
-        </div>
+      <div class="col-sm-6 form">
+        <div class="login form-peice switched">
+          <form class="login-form" action="#" method="post">
+            <div class="form-group">
+               <label for="loginemail">Email Adderss</label>
+               <input type="email" name="loginemail" id="loginemail" required>
+            </div>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
+            <div class="form-group">
+               <label for="loginPassword">Password</label>
+               <input type="password" name="loginPassword" id="loginPassword" required>
+            </div>
 
-        <div class="field mb-3">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-          <%= f.password_field :password, autocomplete: "new-password" , class: "form-control" %>
-          <% if @minimum_password_length %>
-            <br />
-            <em><%= @minimum_password_length %> characters minimum</em>
+            <div class="CTA">
+               <input type="submit" value="Login">
+               <a href="#" class="switch">I'm New</a>
+            </div>
+          </form>
+        </div><!-- End Login Form -->
+
+        <!-- Signup Form -->
+        <div class="signup form-peice">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "signup-form", method: "post") do |f| %>
+
+            <div class="form-group mb-0">
+              <%= f.label :email, class: 'mb-4' %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"abc@gmail.com", id: "email", class: "email pb-0" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :password, class: 'mb-4' %>
+              <%= f.password_field :password, autocomplete: "new-password" , placeholder:"Password" ,class: "form-control pass pb-0", id:"password" %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :password_confirmation, class: 'mb-4' %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" ,placeholder:"Confirm Password", class: "passConfirm form-control pb-0", id: "passwordCon" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :git_token, class: 'mb-4' %>
+              <%= f.text_field :git_token, class: 'form-control pb-0', placeholder: "Enter github token" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :open_ai_key, class: 'mb-4' %>
+              <%= f.text_field :open_ai_key, class: 'form-control pb-0',placeholder: "Enter openai key" %>
+            </div>
+
+            <div class="CTA">
+              <%= f.submit "Update" ,class:"btn btn-outline-secondary"%>
+              <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,class:"btn btn-outline-secondary"%>
+              <%= link_to "Back", :back ,class:"btn btn-outline-secondary"%>
+            </div>
           <% end %>
         </div>
-
-        <div class="field mb-3">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "form-control" %>
-        </div>
-
-        <div class="field mb-3">
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password, autocomplete: "current-password" , class: "form-control" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Update" ,class:"btn btn-outline-secondary"%>
-        </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <h4>Cancel my account</h4>
-    </div>
-    <div class="card-body">
-  <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,class:"btn btn-outline-secondary"%>
-
-    </div>
-    <div class="card-footer">
-    <%= link_to "Back", :back ,class:"btn btn-sm btn-outline-secondary"%>
-    </div>
-  </div>
+  </section>
 </div>

@@ -1,24 +1,36 @@
-<% if @responses.present? %>
-<div class="container">
-  <table class="table table-striped">
-    <tr>
-      <th>Name of Repository</th>
-      <th>Actions</th>
+<div class="container header-margin">
+  <table class="flatTable mt-150 my-100">
+    <tr class="titleTr">
+      <td class="titleTd">REPOSITORIES</td>
+      <td colspan="4"></td>
     </tr>
-    <% @responses.each do |response|%>
-    <tr>
-      <td><%= response['name'] %></td>
-      <td>
-        <%= form_tag pull_requests_path, method: :get do %>
-          <%= hidden_field_tag :git_username, response['owner']['login'] %>
-          <%= hidden_field_tag :repo_name, response['name'] %>
-          <%= submit_tag "View PR's", class: 'btn btn-primary' %>
-        <% end %>
-      </td>
+    <tr class="headingTr">
+      <td>REPO NAME</td>
+      <td>CREATED DATE</td>
+      <td>VISIBILITY</td>
+      <td>ACTIONS</td>
     </tr>
+    <% if @responses.present? %>
+      <% @responses.each do |response|%>
+        <tr>
+          <td><%= response['name'] %></td>
+          <td><%= response['created_at'] %></td>
+          <td><%= response['visibility'] %></td>
+          <td>
+            <%= form_tag pull_requests_path, method: :get do %>
+              <%= hidden_field_tag :git_username, response['owner']['login'] %>
+              <%= hidden_field_tag :repo_name, response['name'] %>
+              <%= submit_tag "View PR's", class: 'btn btn-primary' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td>No repositories found for this Github Account</td>
+        <td colspan="4"></td>
+      </tr>
     <% end %>
   </table>
 </div>
-<% else %>
-  <p> No repositories found for this Github Account</p>
-<% end %>
+
