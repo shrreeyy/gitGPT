@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 class="pt-4">Create an automate github issue</h1>
+  <p class="text-center">Please provide your requirements to create an issue for your Repository</p>
+  <div class="d-flex justify-content-center">
+    <%= form_tag new_audit_context_path, method: :get, 'data-turbo': false, class: 'text-center' do %>
+      <%= text_area_tag :content, '', class: "form-control", rows: 5, cols: 50, required: true %>
+      <%= hidden_field_tag :git_username, @git_username %>
+      <%= hidden_field_tag :repo_name, @repo_name %>
+      <%= submit_tag "View Suggestion", class: 'mt-2 btn btn-success' %>
+    <% end %>
+  </div>
+
+  <p class="mt-5">
+    <i>
+      Here is the sample description:
+      </br>Provide me title and description for github issue for my context:
+      </br>Setup CI/CD pipeline for our rails 7 application using github action
+    </i>
+  </p>
+</div>

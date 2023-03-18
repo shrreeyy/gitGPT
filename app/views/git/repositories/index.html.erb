@@ -1,4 +1,4 @@
-<div class="container header-margin">
+<div class="container">
   <table class="flatTable mt-150 my-100">
     <tr class="titleTr">
       <td class="titleTd">REPOSITORIES</td>
@@ -17,10 +17,15 @@
           <td><%= response['created_at'] %></td>
           <td><%= response['visibility'] %></td>
           <td>
-            <%= form_tag pull_requests_path, method: :get do %>
+            <%= form_tag pull_requests_path, method: :get, 'data-turbo': false, class: "d-inline-flex" do %>
               <%= hidden_field_tag :git_username, response['owner']['login'] %>
               <%= hidden_field_tag :repo_name, response['name'] %>
-              <%= submit_tag "View PR's", class: 'btn btn-primary' %>
+              <%= submit_tag "View PR's", class: 'btn btn-info' %>
+            <% end %>
+            <%= form_tag new_issue_path, method: :get, 'data-turbo': false, class: "d-inline-flex" do %>
+              <%= hidden_field_tag :git_username, response['owner']['login'] %>
+              <%= hidden_field_tag :repo_name, response['name'] %>
+              <%= submit_tag "Create Issue", class: 'btn btn-success' %>
             <% end %>
           </td>
         </tr>
