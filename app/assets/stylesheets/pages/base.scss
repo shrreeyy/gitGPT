@@ -402,3 +402,17 @@ a {
 .bg-colour {
   background: #f7edd5;
 }
+
+.scroller{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

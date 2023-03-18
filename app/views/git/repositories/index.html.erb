@@ -14,7 +14,7 @@
       <% @responses.each do |response|%>
         <tr>
           <td><%= response['name'] %></td>
-          <td><%= response['created_at'] %></td>
+          <td><%= response['created_at'].to_date %></td>
           <td><%= response['visibility'] %></td>
           <td>
             <%= form_tag pull_requests_path, method: :get, 'data-turbo': false, class: "d-inline-flex" do %>

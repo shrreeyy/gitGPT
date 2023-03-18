@@ -1,11 +1,14 @@
 <% if @title.present? && @description.present? %>
-  <div class="container">
+  <div class="container" data-controller="hello">
     <h1 class="py-4">Create an automate github issue</h1>
     <div class="d-flex py-2">
       <div class="col-6">
         <h3>Title: <%= @title %></h3>
         <p><b>Description:</b> <%= @description %></p>
         <button class="btn btn-primary" onclick="location.reload()">Generate New Suggestion</button>
+        <button type="button" class="btn btn-primary" data-action = "click->hello#open_edit_issue_modal">
+          Edit Issue
+        </button>
       </div>
       <div class="col-6 text-center my-auto">
         <p>If you are satisfied with suggestion you can create the issue on github: </p>
@@ -20,3 +23,4 @@
     </div>
   </div>
 <% end %>
+<%= render 'edit_issue' %>

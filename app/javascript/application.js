@@ -3,3 +3,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
 import "popper"
+import jQuery from 'jquery';
+window.$ = jQuery;
