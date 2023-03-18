@@ -1,50 +1,82 @@
-<div class="container my-5">
-<div class="card mx-auto" style="width: 18rem;">
-  <div class="card-header">
-    <h4>Sign Up</h4>
-  </div>
-  <div class="card-body">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container mt-150">
+  <section id="formHolder">
+    <div class="row">
+      <div class="col-sm-6 brand">
+        <a href="#" class="logo">MR <span>.</span></a>
 
-  <div class="field mb-3" >
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"abc@gmail.com",class: "form-control"  %>
-  </div>
+        <div class="heading">
+           <h2>GitGPT</h2>
+           <p>Your Right Choice</p>
+        </div>
 
-  <div class="field mb-3">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" , placeholder:"Password" ,class: "form-control"  %>
-  </div>
+        <div class="success-msg">
+           <p>Great! You are one of our members now</p>
+           <a href="#" class="profile">Your Profile</a>
+        </div>
+      </div>
 
-  <div class="field mb-3">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" ,placeholder:"Confirm Password", class: "form-control"  %>
-  </div>
+      <div class="col-sm-6 form">
+        <div class="login form-peice switched">
+          <form class="login-form" action="#" method="post">
+            <div class="form-group">
+               <label for="loginemail">Email Adderss</label>
+               <input type="email" name="loginemail" id="loginemail" required>
+            </div>
 
-  <div class="field mb-3">
-    <%= f.label :git_token %>
-    <%= f.text_field :git_token, class: 'form-control',placeholder: "Enter github token" %>
-  </div>
+            <div class="form-group">
+               <label for="loginPassword">Password</label>
+               <input type="password" name="loginPassword" id="loginPassword" required>
+            </div>
 
-  <div class="field mb-3">
-    <%= f.label :open_ai_key %><br />
-    <%= f.text_field :open_ai_key, class: 'form-control',placeholder: "Enter openai key" %>
-  </div>
+            <div class="CTA">
+               <input type="submit" value="Login">
+               <a href="#" class="switch">I'm New</a>
+            </div>
+          </form>
+        </div><!-- End Login Form -->
 
-  <div class="actions">
-    <%= f.submit "Sign up" ,class:"btn btn-outline-secondary"%>
-    <%= render "devise/shared/links" %>
-  </div>
+        <!-- Signup Form -->
+        <div class="signup form-peice">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "signup-form", method: "post") do |f| %>
 
-<% end %>
-  </div>
+            <div class="form-group mb-0">
+              <%= f.label :email, class: 'mb-4' %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"abc@gmail.com", id: "email", class: "email pb-0" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :password, class: 'mb-4' %>
+              <%= f.password_field :password, autocomplete: "new-password" , placeholder:"Password" ,class: "form-control pass pb-0", id:"password" %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :password_confirmation, class: 'mb-4' %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" ,placeholder:"Confirm Password", class: "passConfirm form-control pb-0", id: "passwordCon" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :git_token, class: 'mb-4' %>
+              <%= f.text_field :git_token, class: 'form-control pb-0', placeholder: "Enter github token" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :open_ai_key, class: 'mb-4' %>
+              <%= f.text_field :open_ai_key, class: 'form-control pb-0',placeholder: "Enter openai key" %>
+            </div>
+
+            <div class="CTA">
+              <%= f.submit "Sign up" ,class:"btn btn-outline-secondary"%>
+              <%= render "devise/shared/links" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
-
-</div>
 
 

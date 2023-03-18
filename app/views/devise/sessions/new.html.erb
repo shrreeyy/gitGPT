@@ -1,36 +1,88 @@
-<div class="container my-5">
+<div class="container mt-150">
+  <section id="formHolder">
+    <div class="row">
+      <div class="col-sm-6 brand">
+        <a href="#" class="logo">MR <span>.</span></a>
 
-<div class="card mx-auto" style="width: 18rem;">
-  <div class="card-header">
-    <h4>Log in</h4>
-  </div>
-  <div class="card-body">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field mb-3">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control"%>
-  </div>
+        <div class="heading">
+           <h2>Marina</h2>
+           <p>Your Right Choice</p>
+        </div>
 
-  <div class="field mb-3">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-  </div>
+        <div class="success-msg">
+           <p>Great! You are one of our members now</p>
+           <a href="#" class="profile">Your Profile</a>
+        </div>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field mb-3">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div class="col-sm-6 form">
+      
+        <!-- Signup Form -->
+        <div class="signup form-peice switched">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "signup-form", method: "post") do |f| %>
+
+            <div class="form-group mb-0">
+              <%= f.label :email, class: 'mb-4' %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"abc@gmail.com", id: "email", class: "email pb-0" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :password, class: 'mb-4' %>
+              <%= f.password_field :password, autocomplete: "new-password" , placeholder:"Password" ,class: "form-control pass pb-0", id:"password" %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :password_confirmation, class: 'mb-4' %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" ,placeholder:"Confirm Password", class: "passConfirm form-control pb-0", id: "passwordCon" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :git_token, class: 'mb-4' %>
+              <%= f.text_field :git_token, class: 'form-control pb-0', placeholder: "Enter github token" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :open_ai_key, class: 'mb-4' %>
+              <%= f.text_field :open_ai_key, class: 'form-control pb-0',placeholder: "Enter openai key" %>
+            </div>
+
+            <div class="CTA">
+              <%= f.submit "Sign up" ,class:"btn btn-outline-secondary"%>
+              <%= render "devise/shared/links" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="login form-peice">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+            <div class="form-group mb-0">
+              <%= f.label :email, class: 'mb-4' %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"abc@gmail.com", id: "email", class: "email pb-0" %>
+            </div>
+
+            <div class="form-group mb-0">
+              <%= f.label :password_confirmation, class: 'mb-4' %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "current-password", placeholder:"Enter Password", class: "form-control pb-0" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="form-group mb-0">
+                <%= f.label :remember_me, class: 'mb-4' %>
+                <%= f.check_box :remember_me%>
+              </div>
+            <% end %>
+
+            <div class="CTA">
+               <%= f.submit "Log In" ,class:"btn btn-outline-secondary"%>
+                <%= render "devise/shared/links" %>
+            </div>
+          <% end %>
+        </div><!-- End Login Form -->
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log In" ,class:"btn btn-outline-secondary"%>
-    <%= render "devise/shared/links" %>
-  </div>
-<% end %>
-  </div>
+  </section>
 </div>
-
-
-</div>
-

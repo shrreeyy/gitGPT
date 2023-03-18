@@ -1,0 +1,107 @@
+// variable declaration
+$fixed-gb-h: 300px;
+$primary: #3fc060;
+$light: #f1f8ff;
+$dark: #0f172b;
+.hero-home-img {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-head-bg {
+  background-image: url(code_bg.jpg) !important;
+  @extend .hero-home-img;
+}
+
+.home-food-bg {
+  background-image: url(index_food_bg.jpg);
+  @extend .hero-home-img;
+  height: $fixed-gb-h;
+}
+
+.home-res-bg {
+  background-image: url(index_book_bg.jpg);
+  @extend .hero-home-img;
+  height: $fixed-gb-h;
+}
+
+.home-team-bg {
+  background-image: url(homepage_7.jpg);
+  @extend .hero-home-img;
+  height: $fixed-gb-h;
+}
+
+.nav-pills .nav-item .active {
+  border-bottom: 2px solid $primary;
+}
+
+.form-align {
+  justify-content: center;
+  margin-left: 38%;
+  margin-right: 30%;
+}
+
+.team-item {
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+  height: calc(100% - 38px);
+  transition: 0.5s;
+}
+
+.team-item img {
+  transition: 0.5s;
+}
+
+.team-item:hover img {
+  transform: scale(1.1);
+}
+
+.team-item:hover {
+  height: 100%;
+}
+
+.team-item .btn {
+  border-radius: 38px 38px 0 0;
+}
+// variable declaration
+$fixed-gb-h: 300px;
+.hero-service-img {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.serv-head-bg {
+  background-image: url(service_head_bg.jpg);
+  @extend .hero-service-img;
+  height: 600px;
+}
+
+.service-item {
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+  transition: 0.5s;
+}
+
+.service-item:hover {
+  background: $primary;
+}
+
+.service-item * {
+  transition: 0.5s;
+}
+
+.service-item:hover * {
+  color: $light !important;
+}
+$fixed-gb-h: 300px;
+.hero-about-img {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about-head-bg {
+  background-image: url(about_head_bg.jpg);
+  @extend .hero-about-img;
+  height: 600px;
+}

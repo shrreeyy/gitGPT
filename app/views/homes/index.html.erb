@@ -1,10 +1,47 @@
-<% if user_signed_in? %>
-  <div class="parallax mb-2 mw-100">
-    <h6 class="text-white d-flex justify-content-center text-wrap heading ">Simplify GitHub PR reviews and issue management with Git<span class="text-primary">GPT</span>
-    </h6>
+<div class="py-5 home-head-bg header-margin">
+  <div class="container my-5 py-5">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="display-3 text-white   slideInLeft">Enjoy Our<br>GitGPT Services</h1>
+        <div class="text-white slideInLeft mb-4 pb-2">
+          <p>The integration of GitHub and ChatGPT can streamline software development workflows by allowing teams to automate various GitHub services, such as issue creation and pull request review management, using natural language commands. With this application, teams can communicate with GitHub through ChatGPT, eliminating manual data entry and navigation through the GitHub UI, saving time, and reducing errors.
+            <br><br><br>This innovative solution enhances the productivity and efficiency of software development teams, leading to faster development cycles and better outcomes.
+        </div>
+        <%= link_to 'Your Repositories', repositories_path, class: "btn btn-primary py-sm-3 px-sm-5 me-3" %>
+      </div>
+      <div class="col-lg-6 text-center text-lg-end overflow-hidden">
+        <%= image_tag 'homepage_6.jpg', class: "img-fluid" %>
+      </div>
+    </div>
   </div>
-<%else%>
-  <div class="parallax mb-2 mw-100">
-    <h class="text-white d-flex justify-content-center text-wrap heading">Sign up for Git<span class="text-primary">GPT</span> and never miss a beat - stay on top of PRs and issues with ease.</h6>
+</div>
+
+<div class="container py-5">
+  <div class="container ">
+    <div class="row g-4">
+      <div class="col-6">
+        <div class="service-item rounded">
+          <div class="p-4">
+            <i class="fas fa-3x fa-search text-prime mb-4"></i>
+            <h5>Pull Request Review Management:</h5>
+            <p>"Pull request review management" refers to the process of managing and coordinating the reviews of code changes submitted via a pull request in a software development project
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="service-item rounded pt-3">
+          <div class="p-4">
+            <i class="fa-3x fas fa-passport text-prime mb-4"></i>
+            <h5>Automate Github Issue Creation:</h5>
+            <p>GitHub issues are a common way for teams to track and manage tasks, bugs, and feature requests in a software development project. Automating the creation of new issues can help to streamline the process and ensure that important tasks and issues are not overlooked or forgotten.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-<%end%>
+</div>
+
+
+<%= render 'about' %>
+<%= render 'team' %>
