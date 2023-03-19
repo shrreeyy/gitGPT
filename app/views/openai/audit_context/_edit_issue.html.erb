@@ -1,0 +1,30 @@
+<div class="modal" id = "edit_issue" tabindex="-1" role="dialog" data-controller="open-ai">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit issue suggestion</h5>
+      </div>
+      <%= form_with(url: issues_path, method: :post, 'data-turbo': false, class: "d-inline-flex") do |f|%>
+        <div class="container py-2">
+          <div class="col-12">
+            <div class="modal-body">
+              <%= f.label :title %>
+              <%= f.text_field :title, value: @title, class: "form-control mb-3"%>
+              <%= f.label :description %>
+              <%= f.text_area :description, value: @description, class: "form-control", rows: 15 %>
+              <%= hidden_field_tag :git_username, @git_username %>
+              <%= hidden_field_tag :repo_name, @repo_name %>
+            </div>
+          </div>
+          <div class="text-center my-auto">
+            <p>If you are done with the changes, you can add issue for this PR</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-action = "click->open-ai#close_edit_issue_modal">Close</button>
+            <%= submit_tag "Generate Issue", class: 'btn btn-success' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
