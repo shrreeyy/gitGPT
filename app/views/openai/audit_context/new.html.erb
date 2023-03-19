@@ -1,24 +1,14 @@
 <% if @title.present? && @description.present? %>
-  <div class="container" data-controller="hello">
+  <div class="container" data-controller="open-ai">
     <h1 class="py-4">Create an automate github issue</h1>
-    <div class="d-flex py-2">
-      <div class="col-6">
+    <div class="d-flex py-2 w-50 mx-auto text-center">
+      <div>
         <h3>Title: <%= @title %></h3>
         <p><b>Description:</b> <%= @description %></p>
         <button class="btn btn-primary" onclick="location.reload()">Generate New Suggestion</button>
-        <button type="button" class="btn btn-primary" data-action = "click->hello#open_edit_issue_modal">
+        <button type="button" class="btn btn-primary" data-action = "click->open-ai#open_edit_issue_modal">
           Edit Issue
         </button>
-      </div>
-      <div class="col-6 text-center my-auto">
-        <p>If you are satisfied with suggestion you can create the issue on github: </p>
-        <%= form_tag issues_path, method: :post, 'data-turbo': false, class: "d-inline-flex" do %>
-          <%= hidden_field_tag :git_username, @git_username %>
-          <%= hidden_field_tag :repo_name, @repo_name %>
-          <%= hidden_field_tag :title, @title %>
-          <%= hidden_field_tag :description, @description %>
-          <%= submit_tag "Generate Issue", class: 'btn btn-success' %>
-        <% end %>
       </div>
     </div>
   </div>
