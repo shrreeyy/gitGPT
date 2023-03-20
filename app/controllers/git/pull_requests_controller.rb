@@ -8,6 +8,10 @@ module Git
 
     def index
       @responses = ::Git::PullRequest.new(current_user.git_token, @git_username, @repo_name).run
+      if @responses['message'].present?
+        flash[:danger] = @responses['message']
+        redirect_to root_path
+      end
     rescue StandardError => e
       flash[:danger] = "Git API Error: #{e.message}"
     end

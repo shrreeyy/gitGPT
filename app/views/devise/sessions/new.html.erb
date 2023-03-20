@@ -20,12 +20,12 @@
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "signup-form", method: "post") do |f| %>
 
             <div class="form-group mb-0">
-              <%= f.label :email, class: 'mb-4' %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"abc@gmail.com", id: "email", class: "email pb-0" %>
+              <%= f.label :email, class: 'mb-4 fs-6' %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"*****@gmail.com", id: "email", class: "email pb-0" %>
             </div>
 
             <div class="form-group mb-0">
-              <%= f.label :password, class: 'mb-4' %>
+              <%= f.label :password, class: 'mb-4 fs-6' %>
               <%= f.password_field :password, autocomplete: "new-password" , placeholder:"Password" ,class: "form-control pass pb-0", id:"password" %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -33,17 +33,17 @@
             </div>
 
             <div class="form-group mb-0">
-              <%= f.label :password_confirmation, class: 'mb-4' %><br />
+              <%= f.label :password_confirmation, class: 'mb-4 fs-6' %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password" ,placeholder:"Confirm Password", class: "passConfirm form-control pb-0", id: "passwordCon" %>
             </div>
 
             <div class="form-group mb-0">
-              <%= f.label :git_token, class: 'mb-4' %>
+              <%= f.label :git_token, class: 'mb-4 fs-6' %>
               <%= f.text_field :git_token, class: 'form-control pb-0', placeholder: "Enter github token" %>
             </div>
 
             <div class="form-group mb-0">
-              <%= f.label :open_ai_key, class: 'mb-4' %>
+              <%= f.label :open_ai_key, class: 'mb-4 fs-6' %>
               <%= f.text_field :open_ai_key, class: 'form-control pb-0',placeholder: "Enter openai key" %>
             </div>
 
@@ -58,18 +58,18 @@
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
             <div class="form-group mb-0">
-              <%= f.label :email, class: 'mb-4' %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"abc@gmail.com", id: "email", class: "email pb-0" %>
+              <%= f.label :email, class: 'mb-4 fs-6' %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"*****@gmail.com", id: "email", class: "email pb-0" %>
             </div>
 
             <div class="form-group mb-0">
-              <%= f.label :password, class: 'mb-4' %><br />
+              <%= f.label :password, class: 'mb-4 fs-6' %><br />
               <%= f.password_field :password, autocomplete: "current-password", placeholder:"Enter Password", class: "form-control pb-0" %>
             </div>
 
             <% if devise_mapping.rememberable? %>
               <div class="form-group mb-0">
-                <%= f.label :remember_me, class: 'mb-4' %>
+                <%= f.label :remember_me, class: 'mb-4 fs-6' %>
                 <%= f.check_box :remember_me%>
               </div>
             <% end %>
