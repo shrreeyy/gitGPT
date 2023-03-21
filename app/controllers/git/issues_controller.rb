@@ -11,9 +11,9 @@ module Git
 
     def create
       @response = ::Git::Issue.new(current_user.git_token, @git_username, @repo_name).run(@title, @description)
-      if @response['message'].present?
+      if @response && @response.is_a?(Hash) && @response['message'].present?
         flash[:danger] = @response['message']
-        redirect_back(fallback_location: root_path)
+        redirect_to root_path
       else
         flash[:success] = 'Issue created on github successfully'
         redirect_to repositories_path
