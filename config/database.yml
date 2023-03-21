@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: thor # edit me
+  password: password # edit me
+  timeout: 5000
+  host: localhost
+  port: 5433
+
+development:
+  <<: *default
+  database: gitgpt_development
+
+test:
+  <<: *default
+  database: gitgpt_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 20000
+  url: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %> # edit me
+  password: <%= ENV['DATABASE_PASSWORD'] %> # edit me
