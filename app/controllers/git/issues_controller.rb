@@ -25,7 +25,10 @@ module Git
     private
 
     def check_git_token
-      redirect_to root_path, danger: 'Please add your github token' unless current_user.git_token.present?
+      return if current_user.git_token.present?
+
+      flash[:danger] = 'Please add your github token'
+      redirect_to root_path
     end
 
     def permitted_params
