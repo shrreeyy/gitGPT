@@ -1,0 +1,15 @@
+{
+  "message": "",
+  "items": [
+    {
+      "name": "my-repo",
+      "description": "My repository",
+      "url": "https://github.com/my-repo"
+    },
+    {
+      "name": "my-other-repo",
+      "description": "My other repository",
+      "url": "https://github.com/my-other-repo"
+    }
+  ]
+}
